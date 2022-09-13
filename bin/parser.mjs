@@ -88,13 +88,13 @@ function validateOptions(options) {
 }
 
 function showOutput(options) {
- if (options.help) {
+ if (options['--help']) {
   console.log(`
   All commands:
  
  `.trim());
   for (let _arg in args) {
-	  console.log(`    ${_arg.help}`)
+	  console.log(`    ${args[_arg].help}`)
   }
  }
  
