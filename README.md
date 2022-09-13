@@ -20,7 +20,7 @@ $ npm link
 ### Features + Usage
 WPM supports several operations out-of-the-box. Just like a package manager like NPM, it can install and uninstall packages at latest or historical versions, but it has the added benefit of checking for specific known issues of the installed library with the Wasp Ecosystem. 
 
-__As a side-note, wpm also has a (limited) ability to detect typos and output smart responses to these. For example, typing ``instale`` instead of ``install`` will output a message like ``Invalid command 'instale.' Did you mean 'install'?``.__
+_As a side-note, wpm also has a (limited) ability to detect typos and output smart responses to these. For example, typing ``instale`` instead of ``install`` will output a message like ``Invalid command 'instale.' Did you mean 'install'?``._
 
 To install a package, you can simply do:
 ```bash
