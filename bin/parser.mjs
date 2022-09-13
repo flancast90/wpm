@@ -44,9 +44,14 @@ function argsToOptions(rawArgs) {
  for (let _arg in args) {
   let indexOfArg = _args._.indexOf(_arg);
   if (indexOfArg !== -1) {
-   returnArgs[_arg] = _args._[indexOfArg+1] || false
+   returnArgs[_arg] = _args._[indexOfArg+1] || false;
+   
+   _args._.splice(indexOfArg, 2);
   }
  }
+ 
+ returnArgs._ = _args._
+ 
  return returnArgs
 }
 
@@ -59,12 +64,12 @@ function validateOptions(options) {
   `);
  }
 
- for (let option in options) {
+ for (let option in options._) {
   if (!args[option]) {
    return Colors.error(`
-   Error: Unknown option '${options._[0]}'. Did you mean:
+   Error: Unknown option '${options._[option]}'. Did you mean:
   
-   > wpm ${suggestor.guess(options._[0])} ?
+   > wpm ${suggestor.guess(options._[option])} ?
    `);
   }
  }
