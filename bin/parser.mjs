@@ -34,6 +34,7 @@ function argsToOptions(rawArgs) {
      : args[_arg].default;
   }
  }
+ 
  const _args = arg(
    argObject,
    {
@@ -43,6 +44,8 @@ function argsToOptions(rawArgs) {
  
  for (let _arg in args) {
   let indexOfArg = _args._.indexOf(_arg);
+  
+  if (_args[_arg]) returnArgs[_arg] = _args[_arg];
   if (indexOfArg !== -1) {
    returnArgs[_arg] = _args._[indexOfArg+1] || false;
    
@@ -73,7 +76,7 @@ function validateOptions(options) {
    `);
   }
  }
- if (options.install === options.uninstall) {
+ if (options.uninstall && options.install) {
   return Colors.error(`
   Error: Conflicting options. For help, please use the --help flag.
 	
@@ -91,12 +94,13 @@ function showOutput(options) {
  
  `.trim());
   for (let _arg in args) {
-	console.log(`    ${_arg.help}`)
+	  console.log(`    ${_arg.help}`)
   }
  }
- if (options.update) actions.update();
- if (options.install) return actions.install(options.install);
- if (options.uninstall) return actions.uninstall(options.uninstall);
+ 
+ if (options['--update']) actions.update();
+ if (options.install) return actions.install(options.install, options['--version']);
+ if (options.uninstall) return actions.uninstall(options.uninstall, options['--version']);
 }
 
 function cli(args) {
