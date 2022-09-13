@@ -41,7 +41,7 @@ This repository hosts the live-copy of the file containing all the package error
 
 New entries in ``wasp.json`` should follow the format of the ``test-error`` package shown there, namely:
 ```json
-"<package name>: {
+"<package name>": {
   "error": "The message to be displayed, or potentially a fix for the error (e.g., use @v2.0.0 in install)"
 }
 ```
